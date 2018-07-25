@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 JENKINS_ROOT=/usr/local/server/jenkins
 JENKINS_FILENAME=jenkins.war
 
@@ -12,7 +11,7 @@ start)
   nohup java -jar ${JENKINS_ROOT}/${JENKINS_FILENAME} --ajp13Port=-1 --httpPort=${PORT} &
   ;;
 stop)
-  PID=`jps |grep war|awk '{print $1}'`
+  PID=`jps |grep ${JENKINS_FILENAME} |awk '{print $1}'`
   kill -9 ${PID}
   ;;
 restart)
